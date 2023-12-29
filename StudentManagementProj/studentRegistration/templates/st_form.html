@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+
+{% block style %}
+.custom_width{
+    width: 400px;
+}
+{% endblock style %}
+
+{% block content %}
+
+
+
+<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="">
+  <div class="card shadow p-3 mb-5 mt-3 bg-body rounded-3 custom_width ">
+      <div class="card-header mb-2">
+          Register Student
+         </div>
+        {% if form.errors %}
+            {% for k,v in form.errors.items %}
+                <div class="alert alert-danger" role="alert" id="myAlert">
+                {{ v }}
+                </div>
+            {% endfor %}
+        {% endif %}
+         <form action="" method="post" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{ form.st_name.label_tag }}
+            {{ form.st_name }}
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.mobile_no.label_tag }}
+            {{ form.mobile_no }}
+            {{ form.profile_image.label_tag }}
+            {{ form.profile_image }}
+            {{ form.date_of_birth.label_tag }}
+            {{ form.date_of_birth }}
+            <input type="submit" class="btn btn-primary mt-1" value="Submit">
+        </form>
+  </div>
+  </div>
+  </div>
+
+{% endblock content %}
+
+{% block jsscript %}
+<script>
+
+  function removeAlert() {
+    var alert = document.getElementById('myAlert');
+    
+    if (alert) {
+      setTimeout(function() {
+        alert.style.display = 'none';
+      }, 3000); // 5000 milliseconds = 5 seconds
+    }
+  }
+  
+  // Call the function to remove the alert
+  removeAlert();
+</script>
+
+{% endblock jsscript %}

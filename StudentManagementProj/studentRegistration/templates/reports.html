@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="mx-3 mt-3">
+<div class="card shadow p-3 mb-5 bg-body rounded-3">
+    <div class="card-header d-flex flex-row">
+        <h3>Students</h3>
+       </div>
+    <div class="card-body">
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Date of Birth</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for object in objects %}
+              <tr class="">
+               
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ object.st_name }}</td>
+                <td>{{ object.new_date }}</td>
+                
+              </tr>
+              {% empty %}
+              <tr>
+                <td><h3>No Data is available.</h3></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>
+
+  {% endblock content %}

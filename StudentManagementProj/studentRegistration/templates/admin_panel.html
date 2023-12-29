@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+      <div class="">
+        <h1 class="fs-1 fw-bold">Welcome to The Admin Panel</h1>
+        <div class="text-center">
+        <a href="{% url 'dashboard-view' %}" class="btn btn-primary">Dashboard</a>
+        <a href="{% url 'report-view' %}" class="btn btn-primary">Report</a>
+      </div>
+      </div>
+    </div>
+    {% endblock content %}

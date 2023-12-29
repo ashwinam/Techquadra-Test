@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+{% block doc_title %}STR | Login{% endblock doc_title %}
+
+{% block style %}
+
+.custom_width{
+    width: 400px;
+}
+
+.c_height{
+    height: 100vh;
+}
+
+{% endblock style %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="">
+<div class="card shadow p-3 mb-5 mt-3 bg-body rounded-3 custom_width ">
+    <div class="card-header">
+        Login
+       </div>
+{% if form.errors %}
+{% for k,v in form.errors.items %}
+          <div class="alert alert-danger" role="alert" id="myAlert">
+            {{ v }}
+          </div>
+        {% endfor %}
+{% endif %}
+        <form method="post" action="{% url "login" %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="id_username" class="form-label">Username</label>
+          <input type="text" class="form-control" name="username" id="id_username" required>
+          <div id="usernameHelp" class="form-text">We'll never share your data with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="id_password" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="id_password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+</div>
+</div>
+
+{% endblock content %}
+{% block jsscript %}
+<script>
+
+  function removeAlert() {
+    var alert = document.getElementById('myAlert');
+    
+    if (alert) {
+      setTimeout(function() {
+        alert.style.display = 'none';
+      }, 3000); // 5000 milliseconds = 5 seconds
+    }
+  }
+  
+  // Call the function to remove the alert
+  removeAlert();
+</script>
+
+{% endblock jsscript %}
